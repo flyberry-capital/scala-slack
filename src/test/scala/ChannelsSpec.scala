@@ -224,7 +224,7 @@ class ChannelsSpec extends FlatSpec with MockitoSugar with Matchers with BeforeA
       val channel = response.channels(0)
       channel.id shouldBe "C12345"
       channel.name shouldBe "testchannel1"
-      channel.created shouldBe "1408475169"
+      channel.created shouldBe 1408475169
       channel.creator shouldBe "U12345"
       channel.isArchived shouldBe false
       channel.isMember shouldBe true

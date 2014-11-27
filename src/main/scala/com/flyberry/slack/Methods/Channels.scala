@@ -119,14 +119,15 @@ class Channels(httpClient: HttpClient, apiToken: String) {
          SlackChannel(
             (x \ "id").as[String],
             (x \ "name").as[String],
-            (x \ "created").as[Int].toString, // due to inconsistency in Slack's API documentation
+            (x \ "created").as[Int],
             (x \ "creator").as[String],
             (x \ "is_archived").as[Boolean],
             (x \ "is_member").as[Boolean],
             (x \ "members").as[List[String]],
             (x \ "num_members").as[Int],
             (x \ "topic").as[JsValue],
-            (x \ "purpose").as[JsValue]
+            (x \ "purpose").as[JsValue],
+            new DateTime((x \ "created").as[Int])
          )
 
       }
