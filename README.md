@@ -17,18 +17,18 @@ is subject to frequent change._
 
 ## Download
 
-scala-slack can be included in your project by adding this line to your build.sbt:
+scala-slack is listed on Maven Central and can be included in your project by adding this line to your build.sbt:
 ```
-libraryDependencies += "com.flyberry.slack" %% "scala-slack" % "0.5.0"
+libraryDependencies += "com.flyberrycapital.slack" %% "scala-slack" % "0.1.0"
 ```
-Right now you can simply clone this repo and deploy scala-slack locally via `sbt publish-local`. We are working on adding this project to the Maven Central Repo.
+scala-slack supports Scala 2.10 and 2.11.
 
 ## Usage
 
 First, instantiate a SlackClient object.
 
 ```scala
-import com.flyberry.slack.SlackClient
+import com.flyberrycapital.slack.SlackClient
 
 val s = new SlackClient(<YOUR_API_TOKEN>)
 ```
@@ -68,8 +68,8 @@ scala-slack can easily be extended to accommodate new API methods and functional
 
 For example, if Slack adds a chat.poke method, one could write a new version of the Chat class:
 ```scala
-import com.flyberry.slack.HttpClient
-import com.flyberry.slack.Methods.Chat
+import com.flyberrycapital.slack.HttpClient
+import com.flyberrycapital.slack.Methods.Chat
 
 class PokeChat(httpClient: HttpClient, apiToken: String) extends Chat(httpClient, apiToken) {
 
@@ -88,7 +88,7 @@ class PokeChat(httpClient: HttpClient, apiToken: String) extends Chat(httpClient
 and then you can incorporate this into a custom version of SlackClient:
 
 ```scala
-import com.flyberry.slack.SlackClient
+import com.flyberrycapital.slack.SlackClient
 
 class PokeSlackClient(apiToken: String) extends SlackClient(apiToken) {
 
