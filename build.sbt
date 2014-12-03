@@ -2,7 +2,7 @@ name := "scala-slack"
 
 organization := "com.flyberrycapital"
 
-version := "0.1.0-SNAPSHOT"
+version := "0.1.0"
 
 scalacOptions += "-target:jvm-1.6"
 
