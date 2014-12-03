@@ -1,5 +1,5 @@
-import com.flyberry.slack.HttpClient
-import com.flyberry.slack.Methods.Auth
+import com.flyberrycapital.slack.HttpClient
+import com.flyberrycapital.slack.Methods.Auth
 import org.scalatest.mock.MockitoSugar
 import org.mockito.Mockito._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec, Matchers}

@@ -1,5 +1,5 @@
-import com.flyberry.slack.Exceptions._
-import com.flyberry.slack.HttpClient
+import com.flyberrycapital.slack.Exceptions._
+import com.flyberrycapital.slack.HttpClient
 import org.scalatest.{PrivateMethodTester, BeforeAndAfterEach, FlatSpec, Matchers}
 import play.api.libs.json.Json
 

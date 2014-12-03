@@ -1,5 +1,5 @@
-import com.flyberry.slack.HttpClient
-import com.flyberry.slack.Methods.Channels
+import com.flyberrycapital.slack.HttpClient
+import com.flyberrycapital.slack.Methods.Channels
 import org.joda.time.{DateTimeZone, DateTime}
 import org.mockito.Mockito._
 import org.scalatest.mock.MockitoSugar
