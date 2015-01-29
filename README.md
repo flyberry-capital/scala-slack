@@ -99,3 +99,7 @@ class PokeSlackClient(apiToken: String) extends SlackClient(apiToken) {
 
 That being said, we hope that if you implement additional API methods yourself, you'll consider adding them to this project :)
 
+## License
+
+This project is licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
