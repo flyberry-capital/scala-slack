@@ -14,6 +14,11 @@ is subject to frequent change._
  - chat.delete
  - chat.postMessage
  - chat.update
+ - im.close
+ - im.history
+ - im.list
+ - im.mark
+ - im.open
 
 ## Download
 
