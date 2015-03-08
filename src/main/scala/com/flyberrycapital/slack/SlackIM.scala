@@ -1,5 +1,4 @@
 /*
- * Copyright (c) 2014 Flyberry Capital, LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,23 +21,12 @@
 
 package com.flyberrycapital.slack
 
-
 /**
- * A simple Scala client for Slack (http://slack.com/).
- *
- * @param apiToken Your Slack API token (https://api.slack.com/).
+ * Class for representing a Slack IM channel.
+ * 
+ * @param id The IM channel ID.
+ * @param user The user ID of the "calling user"
+ * @param created A UNIX timestamp corresponding to the IM creation data/time.
+ * @param is_user_deleted Denotes if the other user's account has been disabled.
  */
-class SlackClient(private val apiToken: String) {
-
-   protected val BASE_URL = "https://slack.com/api"
-
-   protected val httpClient = new HttpClient()
-
-   import com.flyberrycapital.slack.Methods._
-
-   val api = new API(httpClient, apiToken)
-   val auth = new Auth(httpClient, apiToken)
-   val channels = new Channels(httpClient, apiToken)
-   val chat = new Chat(httpClient, apiToken)
-   val im = new IM(httpClient, apiToken)
-}
+case class SlackIM(id: String, user: String, created: Int, is_user_deleted: Boolean)
