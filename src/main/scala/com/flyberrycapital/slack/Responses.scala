@@ -36,5 +36,12 @@ object Responses {
    case class APITestResponse(ok: Boolean, args: Option[Map[String, String]]) extends SlackResponse
    case class ChannelHistoryResponse(ok: Boolean, messages: List[SlackMessage],
                                      hasMore: Boolean, isLimited: Boolean)
-   case class ChannelListResponse(ok: Boolean, channels: List[SlackChannel])
+   case class ChannelListResponse(ok: Boolean, channels: List[SlackChannel]) extends SlackResponse
+   case class IMCloseResponse(ok: Boolean, no_op: Boolean, already_closed: Boolean) extends SlackResponse
+   case class IMMarkResponse(ok: Boolean) extends SlackResponse
+   case class IMOpenResponse(ok: Boolean, channelId: String, no_op: Boolean, 
+                             already_open: Boolean) extends SlackResponse
+   case class IMListResponse(ok: Boolean, ims: List[SlackIM]) extends SlackResponse
+   case class IMHistoryResponse(ok: Boolean, messages: List[SlackMessage], 
+                                hasMore: Boolean, isLimited: Boolean)
 }
