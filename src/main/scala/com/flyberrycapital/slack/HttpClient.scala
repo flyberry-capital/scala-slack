@@ -68,7 +68,7 @@ class HttpClient(BaseURL: String = "https://slack.com/api") {
    def get(method: String, params: Map[String, String]): JsValue = {
       val result = Json.parse(Http(buildURL(method))
          .params(params)
-         .asString)
+         .asString.body)
 
       checkResponse(result)
 
@@ -76,9 +76,10 @@ class HttpClient(BaseURL: String = "https://slack.com/api") {
    }
 
    def post(method: String, data: Map[String, String]): JsValue = {
-      val result = Json.parse(Http.post(buildURL(method))
+      val result = Json.parse(Http(buildURL(method))
+		 .postForm
          .params(data)
-         .asString)
+         .asString.body)
 
       checkResponse(result)
 
