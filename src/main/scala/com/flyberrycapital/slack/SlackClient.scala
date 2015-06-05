@@ -29,8 +29,7 @@ package com.flyberrycapital.slack
  * @param apiToken Your Slack API token (https://api.slack.com/).
  */
 class SlackClient(private val apiToken: String) {
-
-   protected val BASE_URL = "https://slack.com/api"
+	protected val BASE_URL = "https://slack.com/api"
 
    protected val httpClient = new HttpClient()
 
@@ -41,4 +40,16 @@ class SlackClient(private val apiToken: String) {
    val channels = new Channels(httpClient, apiToken)
    val chat = new Chat(httpClient, apiToken)
    val im = new IM(httpClient, apiToken)
+
+   def connTimeout(ms: Int): SlackClient = {
+      httpClient.connTimeout(ms)
+
+      this
+   }
+
+   def readTimeout(ms: Int): SlackClient = {
+      httpClient.readTimeout(ms)
+
+      this
+   }
 }

@@ -24,7 +24,7 @@ package com.flyberrycapital.slack
 
 import play.api.libs.json.{Json, JsValue}
 
-import scalaj.http.Http
+import scalaj.http.{Http, HttpOptions}
 
 
 /**
@@ -35,6 +35,9 @@ import scalaj.http.Http
 class HttpClient(BaseURL: String = "https://slack.com/api") {
 
    import Exceptions._
+
+   private var connTimeoutMs: Int = 100
+   private var readTimeoutMs: Int = 500
 
    @inline private def buildURL(method: String) = s"$BaseURL/$method"
 
@@ -67,6 +70,8 @@ class HttpClient(BaseURL: String = "https://slack.com/api") {
 
    def get(method: String, params: Map[String, String]): JsValue = {
       val result = Json.parse(Http(buildURL(method))
+         .option(HttpOptions.connTimeout(connTimeoutMs))
+         .option(HttpOptions.readTimeout(readTimeoutMs))
          .params(params)
          .asString.body)
 
@@ -77,12 +82,26 @@ class HttpClient(BaseURL: String = "https://slack.com/api") {
 
    def post(method: String, data: Map[String, String]): JsValue = {
       val result = Json.parse(Http(buildURL(method))
-		 .postForm
+         .postForm
+         .option(HttpOptions.connTimeout(connTimeoutMs))
+         .option(HttpOptions.readTimeout(readTimeoutMs))
          .params(data)
          .asString.body)
 
       checkResponse(result)
 
       result
+   }
+
+   def connTimeout(ms: Int): HttpClient = {
+      connTimeoutMs = ms
+
+      this
+   }
+
+   def readTimeout(ms: Int): HttpClient = {
+      readTimeoutMs = ms
+
+      this
    }
 }
