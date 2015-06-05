@@ -48,7 +48,7 @@ pomExtra := (
 
 libraryDependencies += "com.typesafe.play" %% "play-json" % "2.4.0-M1"
 
-libraryDependencies += "org.scalaj" %% "scalaj-http" % "0.3.16"
+libraryDependencies += "org.scalaj" %% "scalaj-http" % "1.1.0"
 
 libraryDependencies += "org.mockito" % "mockito-core" % "1.8.5"
 
