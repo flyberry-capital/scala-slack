@@ -50,6 +50,6 @@ libraryDependencies += "com.typesafe.play" %% "play-json" % "2.4.0-M1"
 
 libraryDependencies += "org.scalaj" %% "scalaj-http" % "1.1.0"
 
-libraryDependencies += "org.mockito" % "mockito-core" % "1.8.5"
+libraryDependencies += "org.mockito" % "mockito-core" % "1.8.5" % "test"
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.1" % "test"
