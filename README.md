@@ -11,6 +11,7 @@ is subject to frequent change._
  - auth.test
  - channels.history
  - channels.list
+ - channels.setTopic
  - chat.delete
  - chat.postMessage
  - chat.update
