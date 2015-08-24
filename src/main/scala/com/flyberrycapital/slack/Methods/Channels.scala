@@ -134,4 +134,21 @@ class Channels(httpClient: HttpClient, apiToken: String) {
 
       ChannelListResponse((responseDict \ "ok").as[Boolean], channels)
    }
+
+   /**
+    * https://api.slack.com/methods/channels.setTopic
+    *
+    * @param channel The channel ID to set topic for
+    * @param topic The topic to set
+    * @param params A map of optional parameters and their values.
+    * @return A ChannelSetTopicResponse object.
+    */
+   def setTopic(channel: String, topic: String, params: Map[String, String] = Map()): ChannelSetTopicResponse = {
+
+      val cleanedParams = params + ("channel" -> channel, "topic" -> topic, "token" -> apiToken)
+
+      val responseDict = httpClient.get("channels.setTopic", cleanedParams)
+
+      ChannelSetTopicResponse((responseDict \ "ok").as[Boolean], (responseDict \ "topic").as[String])
+   }
 }

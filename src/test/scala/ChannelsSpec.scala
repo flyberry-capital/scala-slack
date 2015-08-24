@@ -185,6 +185,15 @@ class ChannelsSpec extends FlatSpec with MockitoSugar with Matchers with BeforeA
            |}
          """.stripMargin))
 
+      when(mockHttpClient.get("channels.setTopic", Map("channel" -> "C12345", "topic" -> "Test Topic", "token" -> testApiKey)))
+         .thenReturn(Json.parse(
+         """
+           |{
+           |    "ok": true,
+           |    "topic": "Test Topic"
+           |}
+         """.stripMargin))
+
       channels = new Channels(mockHttpClient, testApiKey)
    }
 
@@ -233,6 +242,15 @@ class ChannelsSpec extends FlatSpec with MockitoSugar with Matchers with BeforeA
       (channel.purpose \ "value").as[String] shouldBe "a test channel"
 
       verify(mockHttpClient).get("channels.list", Map("token" -> testApiKey))
+   }
+
+   "Channels.setTopic()" should "make a call to channels.setTopic and return the response in an ChannelSetTopicResponse object" in {
+      val response = channels.setTopic("C12345", "Test Topic")
+
+      response.ok shouldBe true
+      response.topic shouldBe "Test Topic"
+
+      verify(mockHttpClient).get("channels.setTopic", Map("channel" -> "C12345", "topic" -> "Test Topic", "token" -> testApiKey))
    }
 
 }
