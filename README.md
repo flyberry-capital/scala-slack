@@ -27,7 +27,7 @@ scala-slack is listed on Maven Central and can be included in your project by ad
 ```
 libraryDependencies += "com.flyberrycapital" %% "scala-slack" % "0.3.1"
 ```
-scala-slack supports Scala 2.10 and 2.11.
+scala-slack supports Scala 2.10, 2.11, and 2.12.
 
 ## Usage
 
